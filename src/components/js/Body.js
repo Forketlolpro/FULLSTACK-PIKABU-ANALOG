@@ -58,12 +58,15 @@ class Body extends Component {
     }
 
     generateTodosList() {
+        if (this.state.todoList.length===0) {
+            return <div>Поздравляю! Вы всё сделали.</div>;
+        }
         return this.state.todoList.map((item) => {
                 if (item.status === this.state.filterStatus || this.state.filterStatus === 0) {
                     return <TodoElem item={item} onDelete={this.onTodoDelete} onStatusChange={this.onTodoStatusChange}/>;
                 }
             }
-        );
+        )
     }
 
     render() {
