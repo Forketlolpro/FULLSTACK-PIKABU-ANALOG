@@ -8,7 +8,8 @@ class Input extends Component {
     }
 
     handleChange (event) {
-        this.props.onSubmit(event.target[0].value);
+        this.props.onSubmit({status: -1, text: event.target[0].value});
+        event.target[0].value='';
         event.preventDefault();
     }
     render() {

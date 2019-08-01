@@ -1,0 +1,20 @@
+.TodoElem {
+  display: flex;
+  flex-direction: row;
+}
+
+.StatusCheckboxProgress {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid gray;
+}
+
+.StatusCheckboxDone {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: gray;
+}
