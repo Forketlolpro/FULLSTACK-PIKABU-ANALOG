@@ -22,7 +22,7 @@ class TodoElem extends Component {
             <div className={styles.TodoElem}>
                 <div className={(this.props.item.status === -1) ? styles.StatusCheckboxProgress : styles.StatusCheckboxDone} onClick={this.handleChangeStatus}> </div>
                 <div>{this.props.item.text}</div>
-                <div onClick={this.handleChange}>X</div>
+                <div className={styles.DeleteButton} onClick={this.handleChange}>X</div>
             </div>
         );
     }
