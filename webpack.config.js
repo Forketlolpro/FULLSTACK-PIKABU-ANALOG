@@ -1,7 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
@@ -16,6 +19,9 @@ module.exports = {
         filename: '[name].[contenthash].bundle.js',
         path:
             path.resolve(__dirname, 'dist')
+    },
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },
     plugins: [
         new HtmlWebpackPlugin({

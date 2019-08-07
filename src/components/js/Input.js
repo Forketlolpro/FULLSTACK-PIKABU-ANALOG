@@ -15,8 +15,7 @@ class Input extends Component {
     render() {
         return (<form onSubmit={this.handleChange} >
             <label>
-                Заметка:
-                <input type="text" name="name" />
+                <input type="text" name="name" placeholder="Заметка" required pattern="^(?!\s*$).+"/>
             </label>
             <input type="submit" value="Отправить" />
         </form>);
