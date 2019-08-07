@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import styles from "../scss/ListFilter.scss";
 
 class ListFilter extends Component {
     constructor(props) {
@@ -12,11 +13,12 @@ class ListFilter extends Component {
     }
 
     render() {
-        return (<div>
-            <div onClick={this.handleChange} data-value='0'>Все</div>
-            <div onClick={this.handleChange} data-value='1'>Готовые</div>
-            <div onClick={this.handleChange} data-value='-1'>В работе</div>
-        </div>);
+        return (
+            <div className={styles.FilterWrapper}>
+                <div onClick={this.handleChange} data-value='0'>Все</div>
+                <div onClick={this.handleChange} data-value='1'>Готовые</div>
+                <div onClick={this.handleChange} data-value='-1'>В работе</div>
+            </div>);
     }
 }
 

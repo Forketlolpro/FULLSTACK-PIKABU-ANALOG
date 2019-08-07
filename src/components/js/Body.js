@@ -21,9 +21,11 @@ class Body extends Component {
 
     inputSubmit(value) {
         this.setState(prevState => {
-            setToLocalStorage('todoList', [...prevState.todoList, value]);
-            return {
-                todoList: [...prevState.todoList, value], filterStatus: prevState.filterStatus
+            if (!prevState.todoList.some((elem)=>{return elem.text===value.text})) {
+                setToLocalStorage('todoList', [...prevState.todoList, value]);
+                return {
+                    todoList: [...prevState.todoList, value], filterStatus: prevState.filterStatus
+                }
             }
         });
     }
