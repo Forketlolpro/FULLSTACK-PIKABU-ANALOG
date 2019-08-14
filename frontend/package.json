@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "run": "webpack --mode development",
-    "build": "webpack --mode production",
+    "build": " --mode production",
     "watch": "webpack --watch",
     "server": "webpack-dev-server --open"
   },
