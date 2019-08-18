@@ -1,8 +1,12 @@
 const express =require("express");
+const mongoose = require('mongoose');
 const usersRoutes = require("./api/routes/users");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+
+mongoose.connect('mongodb+srv://forket:199115@todo-dju6z.mongodb.net/todo_db?retryWrites=true&w=majority', { useNewUrlParser: true });
+mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
