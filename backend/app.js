@@ -1,6 +1,7 @@
 const express =require("express");
 const mongoose = require('mongoose');
 const usersRoutes = require("./api/routes/users");
+const postsRoutes = require("./api/routes/posts");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
@@ -22,6 +23,7 @@ app.use((req, res, next) => {
    next();
 });
 app.use('/users', usersRoutes);
+app.use('/posts', postsRoutes);
 app.use((req, res, next) => {
     const error = new Error('Not found');
     error.status(404);
