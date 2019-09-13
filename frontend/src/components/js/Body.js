@@ -72,10 +72,7 @@ class Body extends Component {
     }
 
     render() {
-        return (<div className={styles.Body}><Input onSubmit={this.inputSubmit}
-                                                    onDone={this.onTodoStatusChange}/>
-            <div>{this.generateTodosList()}</div>
-            <ListFilter onChange={this.onTodoFilterChange}/></div>);
+        return (<div>боди</div>);
     }
 }
 
