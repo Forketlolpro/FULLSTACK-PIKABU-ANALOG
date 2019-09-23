@@ -1,72 +1,52 @@
 import React, { Component } from "react";
-import { Formik } from 'formik';
-import * as Yup from 'yup';
 import styles from "../scss/LoginForm.scss"
-import TodoElem from "./TodoElem";
-import {getFromLocalStorage} from "../../helpers/localStorage";
 
 
 class LoginForm extends Component {
     constructor(props) {
         super(props);
-        this.formSubmit = this.formSubmit.bind(this);
+        this.state = {
+            email: '',
+            password: ''
+        }
     }
 
-    formSubmit() {
-        console.log('submit');
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        });
+      }
+
+    handleFormSubmit = (event) => {
+        event.preventDefault();
+        console.log('Submit')
     }
 
     render() {
-        return (<div className={styles.LoginForm}>
-            <Formik initialValues={{ email: '' }} onSubmit={this.formSubmit}  validationSchema={Yup.object().shape({email: Yup.string().email().required('Required'),})}>
-                {props => {
-                    const {
-                        values,
-                        touched,
-                        errors,
-                        dirty,
-                        isSubmitting,
-                        handleChange,
-                        handleBlur,
-                        handleSubmit,
-                        handleReset,
-                    } = props;
-                    return (
-                        <form onSubmit={handleSubmit}>
-                            <label htmlFor="email" style={{ display: 'block' }}>
-                                Email
-                            </label>
-                            <input
-                                id="email"
-                                placeholder="Enter your email"
-                                type="text"
-                                value={values.email}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                className={
-                                    errors.email && touched.email ? 'text-input error' : 'text-input'
-                                }
-                            />
-                            {errors.email && touched.email && (
-                                <div className="input-feedback">{errors.email}</div>
-                            )}
-
-                            <button
-                                type="button"
-                                className="outline"
-                                onClick={handleReset}
-                                disabled={!dirty || isSubmitting}
-                            >
-                                Reset
-                            </button>
-                            <button type="submit" disabled={isSubmitting}>
-                                Submit
-                            </button>
-                        </form>
-                    );
-                }}
-            </Formik>
-        </div>);
+        return (
+            <form onSubmit={this.handleFormSubmit}>
+              <label>
+                Email:
+                <input
+                  name="email"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.handleInputChange} />
+              </label>
+              <label>
+                Password:
+                <input
+                  name="password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.handleInputChange} />
+              </label>
+              <button type="submit">Login</button>
+            </form>)
     }
 }
 
