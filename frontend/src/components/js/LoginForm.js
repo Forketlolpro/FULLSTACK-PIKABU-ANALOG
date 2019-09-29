@@ -1,53 +1,47 @@
-import React, { Component } from "react";
-import styles from "../scss/LoginForm.scss"
+import React from 'react';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import styles from '../scss/LoginForm.scss';
 
-
-class LoginForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: '',
-            password: ''
-        }
-    }
-
-    handleInputChange = (event) => {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
-      }
-
-    handleFormSubmit = (event) => {
-        event.preventDefault();
-        console.log('Submit')
-    }
-
+class LoginForm extends React.Component {
     render() {
         return (
-            <form onSubmit={this.handleFormSubmit}>
-              <label>
-                Email:
-                <input
-                  name="email"
-                  type="email"
-                  value={this.state.email}
-                  onChange={this.handleInputChange} />
-              </label>
-              <label>
-                Password:
-                <input
-                  name="password"
-                  type="password"
-                  value={this.state.password}
-                  onChange={this.handleInputChange} />
-              </label>
-              <button type="submit">Login</button>
-            </form>)
+            <Formik
+                initialValues={{
+                    email: '',
+                    password: ''
+                }}
+                validationSchema={Yup.object().shape({
+                    email: Yup.string()
+                        .email('Email is invalid')
+                        .required('Email is required'),
+                    password: Yup.string()
+                        .min(6, 'Password must be at least 6 characters')
+                        .required('Password is required')
+                })}
+                onSubmit={fields => {
+                    console.log(JSON.stringify(fields, null, 4))
+                }}
+                render={({ errors, status, touched }) => (
+                    <Form>
+                        <div className={styles.FormGroup}>
+                            <label htmlFor="email">Email</label>
+                            <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                            <ErrorMessage name="email" component="div" className={styles.InvalidFeedback} />
+                        </div>
+                        <div className={styles.FormGroup}>
+                            <label htmlFor="password">Password</label>
+                            <Field name="password" type="password" className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                            <ErrorMessage name="password" component="div" className={styles.InvalidFeedback} />
+                        </div>
+                        <div className={styles.FormGroup}>
+                            <button type="submit" className={styles.Button}>Login</button>
+                        </div>
+                    </Form>
+                )}
+            />
+        )
     }
 }
 
-export default LoginForm ;
+export { LoginForm }; 

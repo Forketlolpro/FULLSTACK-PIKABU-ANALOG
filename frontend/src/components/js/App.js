@@ -2,11 +2,15 @@ import React, {Component} from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Body from "./Body";
-import styles from "../scss/App.scss"
+import styles from "../scss/App.scss";
 
 class App extends Component {
     render() {
-        return (<div className={styles.App}><Header title={"Picadu"}/><Body/><Footer title={"^_^"}/></div>);
+        return (<div className={styles.App}>
+            <Header title={"Picadu"}/>
+            <Body/>
+            <Footer title={"^_^"}/>
+            </div>);
     }
 }
 

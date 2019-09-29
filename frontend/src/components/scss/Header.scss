@@ -1,9 +1,14 @@
 .Header {
     color: black;
-    background-color: beige;
+    border-bottom: 1px solid black;
     height: auto;
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     font-family: RobotoMono;
+    padding: 20px 30px;
+}
+
+.Logo {
+    font-family: RobotoMono sans-serif;
 }

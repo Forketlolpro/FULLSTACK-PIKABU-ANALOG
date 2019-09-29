@@ -1,3 +1,24 @@
 .LoginForm {
   color: red;
 }
+
+
+.FormGroup {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 280px;
+  margin-bottom: 20px;
+}
+
+.InvalidFeedback {
+  position: absolute;
+  color: red;
+  left: 29%;
+  bottom: -18px;
+}
+
+.Button {
+  margin: 0 0 0 auto;
+}
