@@ -1,5 +1,9 @@
 .LoginForm {
-  color: red;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 15px 0;
 }
 
 
@@ -8,8 +12,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 280px;
-  margin-bottom: 20px;
+  width: 350px;
 }
 
 .InvalidFeedback {
@@ -21,4 +24,8 @@
 
 .Button {
   margin: 0 0 0 auto;
+}
+
+.FormInput {
+  width: 244px;
 }

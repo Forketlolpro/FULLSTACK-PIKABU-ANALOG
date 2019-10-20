@@ -1,14 +1,15 @@
 .Header {
     color: black;
-    border-bottom: 1px solid black;
     height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: RobotoMono;
-    padding: 20px 30px;
+    padding: 0 120px;
 }
 
 .Logo {
     font-family: RobotoMono sans-serif;
+    text-transform: uppercase;
+    font-size: 30px;
 }
